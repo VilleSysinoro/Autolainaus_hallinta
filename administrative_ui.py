@@ -359,7 +359,7 @@ class Ui_MainWindow(object):
         if (self.diaryTableWidget.rowCount() < 10000):
             self.diaryTableWidget.setRowCount(10000)
         self.diaryTableWidget.setObjectName(u"diaryTableWidget")
-        self.diaryTableWidget.setGeometry(QRect(20, 160, 761, 321))
+        self.diaryTableWidget.setGeometry(QRect(20, 160, 921, 321))
         self.diaryTableWidget.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.ForbiddenCursor))
         self.diaryTableWidget.setRowCount(10000)
         self.diaryTableWidget.setColumnCount(7)
@@ -405,7 +405,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

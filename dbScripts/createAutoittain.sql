@@ -24,4 +24,3 @@ COMMENT ON VIEW public.autoittain
 
 GRANT SELECT ON TABLE public.autoittain TO autolainaus;
 GRANT ALL ON TABLE public.autoittain TO postgres;
-

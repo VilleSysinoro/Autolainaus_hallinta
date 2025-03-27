@@ -23,4 +23,3 @@ COMMENT ON VIEW public.ajopaivakirja
 
 GRANT SELECT ON TABLE public.ajopaivakirja TO autolainaus;
 GRANT ALL ON TABLE public.ajopaivakirja TO postgres;
-

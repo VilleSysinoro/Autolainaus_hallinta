@@ -1,5 +1,5 @@
 
-CREATE OR REPLACE VIEW public.vapaana
+CREATE OR REPLACE VIEW public.ajossa
  AS
    SELECT lainaus.rekisterinumero,
  	merkki,

@@ -31,6 +31,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowIcon(icon)
         self.actionMuokkaa = QAction(MainWindow)
         self.actionMuokkaa.setObjectName(u"actionMuokkaa")
+        self.actionOhjesivut = QAction(MainWindow)
+        self.actionOhjesivut.setObjectName(u"actionOhjesivut")
         self.actionTietoja_ohjelmasta = QAction(MainWindow)
         self.actionTietoja_ohjelmasta.setObjectName(u"actionTietoja_ohjelmasta")
         self.centralwidget = QWidget(MainWindow)
@@ -327,6 +329,12 @@ class Ui_MainWindow(object):
         self.notLendablePushButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.notLendablePushButton.setStyleSheet(u"background-color: rgb(220, 162, 25);\n"
 "color: rgb(255, 255, 255);")
+        self.updatePicturePushButton = QPushButton(self.vehicleTab)
+        self.updatePicturePushButton.setObjectName(u"updatePicturePushButton")
+        self.updatePicturePushButton.setGeometry(QRect(420, 90, 101, 51))
+        self.updatePicturePushButton.setFont(font1)
+        self.updatePicturePushButton.setStyleSheet(u"background-color: rgb(57, 136, 220);\n"
+"color: rgb(255, 255, 255);")
         self.tabWidget.addTab(self.vehicleTab, "")
         self.reportsTab = QWidget()
         self.reportsTab.setObjectName(u"reportsTab")
@@ -367,15 +375,16 @@ class Ui_MainWindow(object):
         self.printReportPushButton.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(220, 162, 25);")
         self.diaryTableWidget = QTableWidget(self.reportsTab)
-        if (self.diaryTableWidget.columnCount() < 8):
-            self.diaryTableWidget.setColumnCount(8)
+        if (self.diaryTableWidget.columnCount() < 9):
+            self.diaryTableWidget.setColumnCount(9)
         if (self.diaryTableWidget.rowCount() < 10000):
             self.diaryTableWidget.setRowCount(10000)
         self.diaryTableWidget.setObjectName(u"diaryTableWidget")
-        self.diaryTableWidget.setGeometry(QRect(20, 160, 921, 321))
+        self.diaryTableWidget.setGeometry(QRect(0, 160, 961, 321))
         self.diaryTableWidget.viewport().setProperty(u"cursor", QCursor(Qt.CursorShape.ForbiddenCursor))
         self.diaryTableWidget.setRowCount(10000)
-        self.diaryTableWidget.setColumnCount(8)
+        self.diaryTableWidget.setColumnCount(9)
+        self.diaryTableWidget.horizontalHeader().setStretchLastSection(True)
         self.previewLabel = QLabel(self.reportsTab)
         self.previewLabel.setObjectName(u"previewLabel")
         self.previewLabel.setGeometry(QRect(20, 140, 61, 16))
@@ -490,18 +499,22 @@ class Ui_MainWindow(object):
         self.menubar.setGeometry(QRect(0, 0, 1009, 33))
         self.menuAsetukset = QMenu(self.menubar)
         self.menuAsetukset.setObjectName(u"menuAsetukset")
+        self.menuOhje = QMenu(self.menubar)
+        self.menuOhje.setObjectName(u"menuOhje")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuAsetukset.menuAction())
+        self.menubar.addAction(self.menuOhje.menuAction())
         self.menuAsetukset.addAction(self.actionMuokkaa)
-        self.menuAsetukset.addAction(self.actionTietoja_ohjelmasta)
+        self.menuOhje.addAction(self.actionOhjesivut)
+        self.menuOhje.addAction(self.actionTietoja_ohjelmasta)
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -510,7 +523,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.actionMuokkaa.setText(QCoreApplication.translate("MainWindow", u"Muokkaa...", None))
-        self.actionTietoja_ohjelmasta.setText(QCoreApplication.translate("MainWindow", u"Tietoja ohjelmasta...", None))
+        self.actionOhjesivut.setText(QCoreApplication.translate("MainWindow", u"Ohjesivut", None))
+        self.actionTietoja_ohjelmasta.setText(QCoreApplication.translate("MainWindow", u"Tietoja ohjelmasta", None))
         self.registeredPersonsLabel.setText(QCoreApplication.translate("MainWindow", u"Rekister\u00f6idyt lainaajat", None))
         self.savePersonPushButton.setText(QCoreApplication.translate("MainWindow", u"Tallenna", None))
 #if QT_CONFIG(tooltip)
@@ -570,6 +584,7 @@ class Ui_MainWindow(object):
         self.vehiclePictureLabel.setText("")
         self.removeVehiclePushButton.setText(QCoreApplication.translate("MainWindow", u"Poista", None))
         self.notLendablePushButton.setText(QCoreApplication.translate("MainWindow", u"Ei lainattavissa", None))
+        self.updatePicturePushButton.setText(QCoreApplication.translate("MainWindow", u"P\u00e4ivit\u00e4 kuva", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.vehicleTab), QCoreApplication.translate("MainWindow", u"Autot", None))
         self.reportTypecomboBox.setCurrentText("")
         self.reportTypeLabel.setText(QCoreApplication.translate("MainWindow", u"Raportti", None))
@@ -611,5 +626,6 @@ class Ui_MainWindow(object):
         self.reasonAddLabel.setText(QCoreApplication.translate("MainWindow", u"Ajon tarkoitus", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.maintenanceTab), QCoreApplication.translate("MainWindow", u"Yll\u00e4pito", None))
         self.menuAsetukset.setTitle(QCoreApplication.translate("MainWindow", u"Asetukset", None))
+        self.menuOhje.setTitle(QCoreApplication.translate("MainWindow", u"Ohje", None))
     # retranslateUi
 

@@ -39,7 +39,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         self.ui.dateEdit.dateChanged.connect(self.getDate) # Päivämäärä
         self.ui.timeEdit.timeChanged.connect(self.getTime) # Kellonaika
-
+        self.ui.actionOhjetila.triggered.connect(self.activateHelp) # Ohjetila
 
     # OHJELMOIDUT SLOTIT
     # ------------------
@@ -56,8 +56,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print(time)
         self.ui.timeLabel.setText(str(time))
 
+    def activateHelp(self):
+        QtWidgets.QWhatsThis.enterWhatsThisMode()
+
 # Luodaan sovellus
 app = QtWidgets.QApplication(sys.argv)
+app.setStyle('fusion')
 
 # Luodaan objekti pääikkunalle ja tehdään siitä näkyvä
 window = MainWindow()

@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="whatsThis">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Luettelo taulukkomudoss. Voit valita auton klikkaamalla taulukon solua. Valitsemasi auton rekisterinumero näkyy näytön alaosassa tilarivillä. &lt;a href=&quot;https://www.youtube.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#003e92;&quot;&gt;youtube&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/suttu/uiPictures/VWnbg.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QDateEdit" name="dateEdit">
     <property name="geometry">
@@ -76,9 +79,29 @@
      <height>33</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuOhje">
+    <property name="title">
+     <string>Ohje</string>
+    </property>
+    <addaction name="actionOhjetila"/>
+   </widget>
+   <addaction name="menuOhje"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOhjetila">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="help-browser"/>
+   </property>
+   <property name="text">
+    <string>Ohjetila</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="suttu.qrc"/>
+ </resources>
  <connections/>
 </ui>

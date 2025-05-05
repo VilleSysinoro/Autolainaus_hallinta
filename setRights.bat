@@ -1,0 +1,2 @@
+icacls "C:\Program Files\AutolainausHallinta\settings.json" /grant "STARASOFT\Domain Users":(m,wdac)
+icacls "C:\Program Files\AutolainausHallinta\currentCar.tpng" /grant "STARASOFT\Domain Users":(m,wdac)

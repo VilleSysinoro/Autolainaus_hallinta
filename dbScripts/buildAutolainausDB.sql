@@ -24,10 +24,9 @@ COMMENT ON ROLE autolainaus IS 'Autolainaus-sovellusten käyttäjätunnus autola
 CREATE DATABASE autolainaus
     WITH
     OWNER = postgres
-    TEMPLATE =template0
-    ENCODING = 'WIN1252'
-    LC_COLLATE = 'Finnish_Finland.1252'
-    LC_CTYPE = 'Finnish_Finland.1252'
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'fi-FI'
+    LC_CTYPE = 'fi-FI'
     LOCALE_PROVIDER = 'libc'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
@@ -47,11 +46,10 @@ CREATE TABLE IF NOT EXISTS public.lainaaja
     hetu character(11) PRIMARY KEY NOT NULL,
     etunimi character varying(50) NOT NULL,
     sukunimi character varying(50) NOT NULL,
-    ajokorttiluokka character varying(6) NOT NULL,
+    ajokorttiluokka character varying(10) NOT NULL,
     automaatti boolean NOT NULL,
-    sahkoposti character varying(30)
+    sahkoposti character varying(50)
     );
-
 
 ALTER TABLE IF EXISTS public.lainaaja
     OWNER to postgres;
@@ -120,7 +118,6 @@ CREATE TABLE IF NOT EXISTS public.auto
 );
 
 
-
 ALTER TABLE IF EXISTS public.auto
     OWNER to postgres;
 
@@ -165,10 +162,15 @@ GRANT ALL ON TABLE public.tarkoitus TO postgres;
 CREATE TABLE IF NOT EXISTS public.lainaus
 (
     lainausnumero serial PRIMARY KEY NOT NULL,
+    tarkoitus character varying(30),
     hetu character(11) NOT NULL,
     rekisterinumero character varying(7) NOT NULL,
-    palautus timestamp without time zone,
+    palautusaika timestamp without time zone,
     lainausaika timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT tarkoitus_lainaus_fk FOREIGN KEY (tarkoitus)
+        REFERENCES public.tarkoitus (tarkoitus) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
     CONSTRAINT auto_lainaus_fk FOREIGN KEY (rekisterinumero)
         REFERENCES public.auto (rekisterinumero) MATCH SIMPLE
         ON UPDATE NO ACTION
